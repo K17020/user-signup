@@ -11,10 +11,28 @@ def index():
 
 @app.route("/welcome", methods=['POST'])
 def welcome():
+# getting user information from form
     username = request.form['username']
     password = request.form['password']
-    verify_pwd = request.form['verify_password']
+    verifypwd = request.form['verify_password']
 
-    if len(username) == 0:
-        return render_template('welcome.html', username=username)
+# empty string for error message
+    username_error = ''
+    password_error = ''
+    verifypwd_error = ''
+
+# checks to see if the username and password is vaild base off these requirments
+    if len(username) < 4 or len(username) > 20 or ' ' in username:
+        username_error = "That's not a vaild username"
+        return render_template('index.html', username=username, username_error=username_error,)
+
+    if len(password) < 4 or len(password) > 20 or ' ' in password:
+        password_error = "That's not a vaild password"
+        return render_template('index.html', username=username, password_error=password_error)
+
+    if password != verifypwd:
+        verifypwd_error = "That password didn't match"
+        return render_template('index.html', username=username, verifypwd_error=verifypwd_error)
+    
+    return render_template('welcome.html', username=username)
 app.run()
