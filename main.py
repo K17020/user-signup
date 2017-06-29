@@ -9,7 +9,7 @@ app.config['DEBUG'] = True
 def index():
     return render_template('index.html')
 
-@app.route("/welcome", methods=['POST'])
+@app.route("/signup", methods=['POST'])
 def welcome():
 # getting user information from form
     username = request.form['username']

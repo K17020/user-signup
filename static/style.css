@@ -1,13 +1,28 @@
 body {
-    background-color: #5CD2E8;
-    font-family: Arial;
-    text-align: center;
-}
-
-h1 {
-    text-align: center;
+    background-color: #7DFFF4;
 }
 
 .error {
     color: red;
+}
+
+.signup_form {
+    background-color: #45B2AA;
+    width: 50%;
+    margin: 3em auto;
+    border: solid white;
+    font-size: 2em;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.signup_form h1 {
+    text-align: center;
+}
+
+.from_content {
+    margin: 0 5em;
+}
+
+.submit_application {
+    font-size: 1em;
 }
