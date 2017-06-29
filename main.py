@@ -15,11 +15,13 @@ def welcome():
     username = request.form['username']
     password = request.form['password']
     verifypwd = request.form['verify_password']
+    email = request.form['userEmail']
 
 # empty string for error message
     username_error = ''
     password_error = ''
     verifypwd_error = ''
+    email_error = ''
 
 # checks to see if the username and password is vaild base off these requirments
     if len(username) < 4 or len(username) > 20 or ' ' in username:
@@ -33,6 +35,10 @@ def welcome():
     if password != verifypwd:
         verifypwd_error = "That password didn't match"
         return render_template('index.html', username=username, verifypwd_error=verifypwd_error)
+    if len(email) > 1:
+        if len(email) < 4 or len(email) > 20 or '' in email or '@' not in email:
+            email_error = 'enter a valid email'
+            return render_template('index.html', username=username, userEmail=email, email_error=email_error)
     
     return render_template('welcome.html', username=username)
 app.run()
